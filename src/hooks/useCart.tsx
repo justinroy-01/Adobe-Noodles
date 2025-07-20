@@ -26,7 +26,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     // Save cart to localStorage whenever it changes
-    localStorage.setItem('adobe-noodles-cart', JSON.stringify(items));
+    const serializableItems = items.map(item => ({
+      ...item,
+      product: {
+        ...item.product,
+        icon: undefined // Remove React component to prevent circular reference
+      }
+    }));
+    localStorage.setItem('adobe-noodles-cart', JSON.stringify(serializableItems));
   }, [items]);
 
   const addToCart = (product: Product) => {
