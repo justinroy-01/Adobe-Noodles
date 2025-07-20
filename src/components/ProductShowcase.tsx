@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { Star, Package, Zap, Palette } from 'lucide-react';
+import { Star, Package, Zap, Palette, Check } from 'lucide-react';
+import { useCart } from '../hooks/useCart';
+import { Product } from '../types';
 
 const ProductShowcase: React.FC = () => {
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
+  const [addedToCart, setAddedToCart] = useState<string | null>(null);
+  const { addToCart } = useCart();
 
   const products = [
     {
@@ -42,6 +46,16 @@ const ProductShowcase: React.FC = () => {
       icon: <Star className="h-6 w-6" />
     }
   ];
+
+  const handleAddToCart = (product: Product) => {
+    addToCart(product);
+    setAddedToCart(product.id);
+    
+    // Reset the success state after 2 seconds
+    setTimeout(() => {
+      setAddedToCart(null);
+    }, 2000);
+  };
 
   return (
     <section id="products" className="py-20 bg-gray-50 dark:bg-gray-900">
@@ -93,8 +107,23 @@ const ProductShowcase: React.FC = () => {
                     <span className="text-sm text-gray-500 ml-2">(4.9/5)</span>
                   </div>
                   
-                  <button className="w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg transition-colors">
-                    Add to Cart
+                  <button 
+                    onClick={() => handleAddToCart(product)}
+                    disabled={addedToCart === product.id}
+                    className={`w-full py-2 px-4 rounded-lg transition-all flex items-center justify-center space-x-2 ${
+                      addedToCart === product.id
+                        ? 'bg-green-600 text-white'
+                        : 'bg-red-600 hover:bg-red-700 text-white'
+                    }`}
+                  >
+                    {addedToCart === product.id ? (
+                      <>
+                        <Check className="h-4 w-4" />
+                        <span>Added!</span>
+                      </>
+                    ) : (
+                      <span>Add to Cart</span>
+                    )}
                   </button>
                 </div>
               </div>
@@ -132,8 +161,23 @@ const ProductShowcase: React.FC = () => {
                         ))}
                       </div>
                     </div>
-                    <button className="w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg transition-colors">
-                      Add to Cart
+                    <button 
+                      onClick={() => handleAddToCart(product)}
+                      disabled={addedToCart === product.id}
+                      className={`w-full py-2 px-4 rounded-lg transition-all flex items-center justify-center space-x-2 ${
+                        addedToCart === product.id
+                          ? 'bg-green-600 text-white'
+                          : 'bg-red-600 hover:bg-red-700 text-white'
+                      }`}
+                    >
+                      {addedToCart === product.id ? (
+                        <>
+                          <Check className="h-4 w-4" />
+                          <span>Added!</span>
+                        </>
+                      ) : (
+                        <span>Add to Cart</span>
+                      )}
                     </button>
                   </div>
                 </div>

@@ -7,10 +7,11 @@ export interface User {
 export interface Product {
   id: string;
   name: string;
-  price: number;
+  price: string;
   image: string;
   description: string;
   features: string[];
+  icon?: React.ReactNode;
 }
 
 export interface TeamMember {

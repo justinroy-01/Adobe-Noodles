@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, User, ShoppingCart, Moon, Sun } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
+import { useCart } from '../hooks/useCart';
+import CartModal from './CartModal';
 
 interface NavigationProps {
   onAuthClick: () => void;
@@ -10,8 +12,10 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ onAuthClick, darkMode, setDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { user, logout } = useAuth();
+  const { getTotalItems } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,11 +75,16 @@ const Navigation: React.FC<NavigationProps> = ({ onAuthClick, darkMode, setDarkM
               )}
             </button>
             
-            <button className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors relative">
+            <button 
+              onClick={() => setCartOpen(true)}
+              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors relative"
+            >
               <ShoppingCart className="h-5 w-5" />
-              <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                0
-              </span>
+              {getTotalItems() > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                  {getTotalItems()}
+                </span>
+              )}
             </button>
 
             {user ? (
@@ -146,6 +155,8 @@ const Navigation: React.FC<NavigationProps> = ({ onAuthClick, darkMode, setDarkM
             </div>
           </div>
         )}
+
+        <CartModal isOpen={cartOpen} onClose={() => setCartOpen(false)} />
       </div>
     </nav>
   );
