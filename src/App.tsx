@@ -29,17 +29,12 @@ function App() {
 
   // Initialize dark mode on first load
   useEffect(() => {
-    const saved = localStorage.getItem('darkMode');
-    if (saved) {
-      const isDark = JSON.parse(saved);
-      setDarkMode(isDark);
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
-  }, []);
+  }, [darkMode]);
 
   // Update favicon
   useEffect(() => {

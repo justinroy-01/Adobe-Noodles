@@ -101,7 +101,7 @@ const BehindTheNoodles: React.FC = () => {
               <div className="relative">
                 <button
                   onClick={() => setSelectedMember(null)}
-                  className="absolute top-4 right-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors z-10"
+                  className="absolute top-4 right-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors z-10 text-gray-900 dark:text-gray-100"
                 >
                   <X className="h-5 w-5" />
                 </button>

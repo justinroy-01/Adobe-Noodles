@@ -77,7 +77,7 @@ const Testimonials: React.FC = () => {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-red-50 to-orange-50 dark:from-gray-900 dark:to-red-900/20">
+    <section className="py-20 bg-gradient-to-br from-red-50 to-orange-50 dark:from-gray-800 dark:to-red-900/20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -159,7 +159,7 @@ const Testimonials: React.FC = () => {
           {testimonials.slice(0, 3).map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl p-6 hover:bg-white dark:hover:bg-gray-800 transition-all cursor-pointer"
+             className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-xl p-6 hover:bg-white dark:hover:bg-gray-700 transition-all cursor-pointer"
               onClick={() => setCurrentIndex(testimonial.id - 1)}
             >
               <div className="flex items-center mb-3">

@@ -39,7 +39,7 @@ const AIFlavorGenerator: React.FC = () => {
   ];
 
   return (
-    <section id="flavors" className="py-20 bg-white dark:bg-gray-800">
+    <section id="flavors" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -64,7 +64,7 @@ const AIFlavorGenerator: React.FC = () => {
                     value={userInput}
                     onChange={(e) => setUserInput(e.target.value)}
                     placeholder="Describe your mood, profession, or what inspires you... (e.g., 'Creative designer working late', 'Adventurous traveler', 'Stressed student')"
-                    className="w-full p-4 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-gray-800 dark:text-white resize-none h-24"
+                    className="w-full p-4 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700 dark:text-white resize-none h-24"
                   />
                 </div>
 
@@ -75,7 +75,7 @@ const AIFlavorGenerator: React.FC = () => {
                       <button
                         key={prompt}
                         onClick={() => setUserInput(prompt)}
-                        className="px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm hover:bg-red-50 dark:hover:bg-red-900 hover:border-red-300 transition-colors"
+                        className="px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-sm hover:bg-red-50 dark:hover:bg-red-900/30 hover:border-red-300 dark:hover:border-red-500 transition-colors text-gray-900 dark:text-gray-100"
                       >
                         {prompt}
                       </button>
@@ -106,7 +106,7 @@ const AIFlavorGenerator: React.FC = () => {
             {/* Result Section */}
             <div className="flex-1 w-full">
               {generatedFlavor ? (
-                <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+                <div className="bg-white dark:bg-gray-700 rounded-2xl p-6 shadow-lg">
                   <div className="flex items-center space-x-2 mb-4">
                     <Sparkles className="h-5 w-5 text-red-600" />
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">Your Custom Flavor</h3>
@@ -135,7 +135,7 @@ const AIFlavorGenerator: React.FC = () => {
                   </div>
                 </div>
               ) : (
-                <div className="bg-white dark:bg-gray-800 rounded-2xl p-12 text-center border-2 border-dashed border-gray-300 dark:border-gray-600">
+                <div className="bg-white dark:bg-gray-700 rounded-2xl p-12 text-center border-2 border-dashed border-gray-300 dark:border-gray-600">
                   <Wand2 className="h-16 w-16 text-gray-400 mx-auto mb-4" />
                   <p className="text-gray-500 dark:text-gray-400 text-lg">
                     Your custom flavor will appear here

@@ -67,17 +67,18 @@ const Navigation: React.FC<NavigationProps> = ({ onAuthClick, darkMode, setDarkM
             <button
               onClick={() => setDarkMode(!darkMode)}
               className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-gray-900 dark:text-gray-100"
+              title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {darkMode ? (
                 <Sun className="h-5 w-5 text-yellow-500" />
               ) : (
-                <Moon className="h-5 w-5 text-gray-600" />
+                <Moon className="h-5 w-5 text-gray-600 dark:text-gray-300" />
               )}
             </button>
             
             <button 
               onClick={() => setCartOpen(true)}
-              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors relative"
+              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors relative text-gray-900 dark:text-gray-100"
             >
               <ShoppingCart className="h-5 w-5" />
               {getTotalItems() > 0 && (
@@ -110,12 +111,38 @@ const Navigation: React.FC<NavigationProps> = ({ onAuthClick, darkMode, setDarkM
 
           {/* Mobile menu button */}
           <div className="md:hidden">
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-gray-900 dark:text-gray-100"
+                title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {darkMode ? (
+                  <Sun className="h-5 w-5 text-yellow-500" />
+                ) : (
+                  <Moon className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                )}
+              </button>
+              
+              <button 
+                onClick={() => setCartOpen(true)}
+                className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors relative text-gray-900 dark:text-gray-100"
+              >
+                <ShoppingCart className="h-5 w-5" />
+                {getTotalItems() > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                    {getTotalItems()}
+                  </span>
+                )}
+              </button>
+              
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700"
+              className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
+            </div>
           </div>
         </div>
 
@@ -138,7 +165,7 @@ const Navigation: React.FC<NavigationProps> = ({ onAuthClick, darkMode, setDarkM
                     <p className="px-3 text-sm text-gray-700 dark:text-gray-300">Welcome, {user.name}</p>
                     <button
                       onClick={logout}
-                      className="block w-full text-left px-3 py-2 text-red-600 hover:text-red-700"
+                      className="block w-full text-left px-3 py-2 text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
                     >
                       Logout
                     </button>
@@ -146,7 +173,7 @@ const Navigation: React.FC<NavigationProps> = ({ onAuthClick, darkMode, setDarkM
                 ) : (
                   <button
                     onClick={onAuthClick}
-                    className="block w-full text-left px-3 py-2 text-red-600 hover:text-red-700"
+                    className="block w-full text-left px-3 py-2 text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
                   >
                     Sign In / Sign Up
                   </button>
