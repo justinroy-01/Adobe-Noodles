@@ -149,13 +149,6 @@ const AIFlavorGenerator: React.FC = () => {
           </div>
         </div>
 
-        {/* Technical Note */}
-        <div className="mt-8 text-center">
-          <p className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 rounded-lg p-4 max-w-2xl mx-auto">
-            <strong>Demo Mode:</strong> This is a placeholder implementation. The final version will integrate with 
-            ChatGPT API for dynamic flavor descriptions and DALL·E API for custom packaging images.
-          </p>
-        </div>
       </div>
     </section>
   );
